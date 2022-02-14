@@ -8,7 +8,6 @@ def set_priorities(label: str, blue: str, yellow: str, red: str):
     blue_time = count_secodns(fetch_segment(blue))
     yellow_time = count_secodns(fetch_segment(yellow))
     red_time = count_secodns(fetch_segment(red))
-
     tasks = api.get_tasks(filter=f"@{label}")
     for item in tasks:
         task = item.__dict__

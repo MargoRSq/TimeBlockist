@@ -12,10 +12,10 @@ def main():
         for i in range(1, (len(av) - 1) // 4 + 1):
             mn = 0 if i == 1 else 3
             print(av[i+mn:i+mn+4])
-            set_priorities(av[(i + mn) % 4],
-                           av[(i + mn) % 4 + 1],
-                           av[(i + mn) % 4 + 2],
-                           av[(i + mn) % 4 + 3])
+            set_priorities(av[(i + mn)],
+                           av[(i + mn) + 1],
+                           av[(i + mn) + 2],
+                           av[(i + mn) + 3])
         sleep(30)
 
 if __name__ == '__main__':
