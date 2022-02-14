@@ -16,7 +16,7 @@ def main():
                            av[(i + mn) % 4 + 1],
                            av[(i + mn) % 4 + 2],
                            av[(i + mn) % 4 + 3])
-        sleep()
+        sleep(30)
 
 if __name__ == '__main__':
     main()
