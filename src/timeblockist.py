@@ -12,7 +12,8 @@ def set_priorities(label: str, blue: str, yellow: str, red: str):
     for item in tasks:
         task = item.__dict__
         due = task['due'].__dict__['datetime']
-        dt_now = datetime.now()
+        # for heroku + 3 hours
+        dt_now = datetime.now() + timedelta(hours=3)
         if due:
             dt = datetime.strptime(due, '%Y-%m-%dT%H:%M:%SZ')
             delta_seconds = (dt + timedelta(hours=3) - dt_now).seconds

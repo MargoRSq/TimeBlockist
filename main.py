@@ -11,7 +11,6 @@ def main():
     while (1):
         for i in range(1, (len(av) - 1) // 4 + 1):
             mn = 0 if i == 1 else 3
-            print(av[i+mn:i+mn+4])
             set_priorities(av[(i + mn)],
                            av[(i + mn) + 1],
                            av[(i + mn) + 2],
