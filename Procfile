@@ -1,1 +1,1 @@
-worker: python main.py School_Project 30d 14d 7d Timeblock 2h 1h 10m
+worker: python main.py School_Project 30d 14d 7d Timeblock 3h 2h 30m

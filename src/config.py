@@ -4,6 +4,7 @@ from todoist_api_python.api import TodoistAPI
 env = Config(".env")
 
 TOKEN = env('TOKEN')
+HEROKU = int(env("HEROKU"))
 
 api = TodoistAPI(TOKEN)
 
