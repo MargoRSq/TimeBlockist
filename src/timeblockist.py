@@ -11,24 +11,25 @@ def set_priorities(label: str, blue: str, yellow: str, red: str):
     tasks = api.get_tasks(filter=f"@{label}")
     for item in tasks:
         task = item.__dict__
-        due = task['due'].__dict__['datetime']
-        # for heroku + 3 hours
-        if HEROKU:
-            dt_now = datetime.now() + timedelta(hours=3)
-        else:
-            dt_now = datetime.now()
-        if due:
-            dt = datetime.strptime(due, '%Y-%m-%dT%H:%M:%SZ')
-            delta_seconds = (dt + timedelta(hours=3) - dt_now).seconds
-        else:
-            date_no_time = task['due'].__dict__['date']
-            dt = datetime.strptime(date_no_time, '%Y-%m-%d')
-            delta_seconds = ((dt + timedelta(hours=3) - dt_now).days) * DAY
-        if delta_seconds < red_time or (dt + timedelta(hours=3) - dt_now).days < 0:
-            api.update_task(task['id'], priority=4)
-        elif delta_seconds < yellow_time:
-            api.update_task(task['id'], priority=3)
-        elif delta_seconds < blue_time:
-            api.update_task(task['id'], priority=2)
-        else:
-            api.update_task(task['id'], priority=1)
+        if task['due'] != None:
+            due = task['due'].__dict__['datetime']
+            # for heroku + 3 hours
+            if HEROKU:
+                dt_now = datetime.now() + timedelta(hours=3)
+            else:
+                dt_now = datetime.now()
+            if due:
+                dt = datetime.strptime(due, '%Y-%m-%dT%H:%M:%SZ')
+                delta_seconds = (dt + timedelta(hours=3) - dt_now).seconds
+            else:
+                date_no_time = task['due'].__dict__['date']
+                dt = datetime.strptime(date_no_time, '%Y-%m-%d')
+                delta_seconds = ((dt + timedelta(hours=3) - dt_now).days) * DAY
+            if delta_seconds < red_time or (dt + timedelta(hours=3) - dt_now).days < 0:
+                api.update_task(task['id'], priority=4)
+            elif delta_seconds < yellow_time:
+                api.update_task(task['id'], priority=3)
+            elif delta_seconds < blue_time:
+                api.update_task(task['id'], priority=2)
+            else:
+                api.update_task(task['id'], priority=1)
